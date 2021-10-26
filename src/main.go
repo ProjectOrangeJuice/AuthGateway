@@ -71,7 +71,7 @@ func basicAuth(w http.ResponseWriter, r *http.Request) {
 
 	addAccess(IP)
 
-	authed, err := json.MarshalIndent(access, "", "    ")
+	authed, err := json.MarshalIndent(r.Header, "", "    ")
 	if err != nil {
 		log.Printf("error displaying auth list %+v", err)
 		http.Error(w, "failed to display auth list", http.StatusInternalServerError)
